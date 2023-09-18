@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(OtmsContext))]
     [Migration("20230710234154_AddedDirectorEntity")]
     partial class AddedDirectorEntity
     {

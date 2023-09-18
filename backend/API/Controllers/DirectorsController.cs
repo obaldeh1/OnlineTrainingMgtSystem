@@ -1,5 +1,5 @@
 using API.DataContext;
-using API.Models;
+using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -8,17 +8,17 @@ namespace API.Controllers
     [Route("[controller]")]
     public class DirectorsController : Controller
     {
-        private readonly ApplicationDbContext _dbContext;
-        public DirectorsController(ApplicationDbContext dbContext)
+        private readonly OtmsContext _otmsContext;
+        public DirectorsController(OtmsContext otmsContext)
         {
-            _dbContext = dbContext;
+            _otmsContext = otmsContext;
         }
 
         //get all directors
         [HttpGet("GetAllDirectors")]
         public ActionResult<List<Director>> GetDirectors()
         {
-            return _dbContext.Directors.ToList();
+            return _otmsContext.Directors.ToList();
         }
 
         //create a director
@@ -33,9 +33,9 @@ namespace API.Controllers
                 PhoneNumber = model.PhoneNumber
             };
 
-            _dbContext.Directors.Add(director);
+            _otmsContext.Directors.Add(director);
 
-            _dbContext.SaveChanges();
+            _otmsContext.SaveChanges();
 
             return Ok();
         }
